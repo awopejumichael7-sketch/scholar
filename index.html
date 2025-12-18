@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholar's Camp | WAEC, JAMB, NECO CBT Practice</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="ExamMaster Pro" onerror="this.style.display='none'">
+                    <h1><span class="logo-primary">Scholar's</span><span class="logo-secondary">Camp</span></h1>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+                    <a href="cbt.html"><i class="fas fa-laptop-code"></i> CBT Simulator</a>
+                    <a href="library.html"><i class="fas fa-book-open"></i> Past Questions</a>
+                    <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                </div>
+                
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="signupBtn">Sign Up Free</button>
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Master WAEC, JAMB & NECO with Smart CBT Practice</h1>
+                <p class="hero-subtitle">Access 10,000+ past questions, AI-powered analytics, and personalized learning paths for Nigerian students</p>
+                
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-large" id="startPractice">
+                        <i class="fas fa-play-circle"></i> Start Free Practice
+                    </button>
+                    <button class="btn btn-secondary btn-large" id="exploreSubjects">
+                        <i class="fas fa-search"></i> Explore Subjects
+                    </button>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>50,000+</h3>
+                        <p>Questions</p>
+                    </div>
+                    <div class="stat">
+                        <h3>100,000+</h3>
+                        <p>Students</p>
+                    </div>
+                    <div class="stat">
+                        <h3>95%</h3>
+                        <p>Pass Rate</p>
+                    </div>
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Access</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="floating-card card-1">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>WAEC 2024</h4>
+                    <p>Now Available</p>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-desktop"></i>
+                    <h4>JAMB CBT</h4>
+                    <p>Real Simulator</p>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-award"></i>
+                    <h4>Top Scores</h4>
+                    <p>See Leaderboard</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links">
+        <div class="container">
+            <h2 class="section-title">Get Started With Your Exam Preparation</h2>
+            <p class="section-subtitle">Choose your exam type or class level to begin practicing</p>
+            
+            <div class="links-grid">
+                <!-- WAEC Card -->
+                <div class="link-card waec" onclick="window.location.href='library.html?exam=waec'">
+                    <div class="card-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>WAEC Past Questions</h3>
+                    <p>2005-2024 with detailed solutions and explanations</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-file-alt"></i> 15,000+ Questions</span>
+                        <span><i class="fas fa-calendar"></i> 20 Years</span>
+                    </div>
+                    <button class="card-btn">Start Practicing <i class="fas fa-arrow-right"></i></button>
+                </div>
+                
+                <!-- JAMB Card -->
+                <div class="link-card jamb" onclick="window.location.href='cbt.html?exam=jamb'">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>JAMB CBT Simulator</h3>
+                    <p>Realistic computer-based test experience with timer</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-clock"></i> Timed Exams</span>
+                        <span><i class="fas fa-chart-bar"></i> Instant Scoring</span>
+                    </div>
+                    <button class="card-btn">Launch Simulator <i class="fas fa-arrow-right"></i></button>
+                </div>
+                
+                <!-- NECO Card -->
+                <div class="link-card neco" onclick="window.location.href='library.html?exam=neco'">
+                    <div class="card-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3>NECO Past Questions</h3>
+                    <p>Comprehensive NECO database with subject breakdown</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-file-alt"></i> 10,000+ Questions</span>
+                        <span><i class="fas fa-book"></i> All Subjects</span>
+                    </div>
+                    <button class="card-btn">Explore Questions <i class="fas fa-arrow-right"></i></button>
+                </div>
+                
+                <!-- Year 7-12 Card -->
+                <div class="link-card secondary" onclick="window.location.href='library.html?level=secondary'">
+                    <div class="card-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Year 7-12 (JSS1-SS3)</h3>
+                    <p>1st, 2nd & 3rd Term past questions for all subjects</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-layer-group"></i> All Terms</span>
+                        <span><i class="fas fa-users"></i> All Classes</span>
+                    </div>
+                    <button class="card-btn">Browse by Class <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Library -->
+    <section class="subjects">
+        <div class="container">
+            <h2 class="section-title">Browse Subjects</h2>
+            <p class="section-subtitle">Select a subject to access past questions and practice tests</p>
+            
+            <div class="subjects-grid">
+                <!-- Subjects will be populated by JavaScript -->
+                <div class="subject-card" data-subject="mathematics">
+                    <i class="fas fa-calculator"></i>
+                    <h4>Mathematics</h4>
+                    <span class="question-count">4,200 questions</span>
+                </div>
+                
+                <div class="subject-card" data-subject="english">
+                    <i class="fas fa-language"></i>
+                    <h4>English</h4>
+                    <span class="question-count">3,800 questions</span>
+                </div>
+                
+                <div class="subject-card" data-subject="physics">
+                    <i class="fas fa-atom"></i>
+                    <h4>Physics</h4>
+                    <span class="question-count">2,500 questions</span>
+                </div>
+                
+                <div class="subject-card" data-subject="chemistry">
+                    <i class="fas fa-flask"></i>
+                    <h4>Chemistry</h4>
+                    <span class="question-count">2,300 questions</span>
+                </div>
+                
+                <div class="subject-card" data-subject="biology">
+                    <i class="fas fa-dna"></i>
+                    <h4>Biology</h4>
+                    <span class="question-count">2,700 questions</span>
+                </div>
+                
+                <div class="subject-card" data-subject="ict">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>ICT</h4>
+                    <span class="question-count">1,800 questions</span>
+                </div>
+                
+                <div class="subject-card" data-subject="economics">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Economics</h4>
+                    <span class="question-count">1,900 questions</span>
+                </div>
+                
+                <div class="subject-card" data-subject="government">
+                    <i class="fas fa-landmark"></i>
+                    <h4>Government</h4>
+                    <span class="question-count">1,600 questions</span>
+                </div>
+                
+                <div class="view-all">
+                    <a href="library.html">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span>View All 30+ Subjects</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose ExamMaster Pro?</h2>
+            <p class="section-subtitle">Powerful features designed to boost your exam performance</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Analytics</h3>
+                    <p>Get personalized insights into your strengths and weaknesses with smart recommendations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                    <h3>Real Exam Simulation</h3>
+                    <p>Experience the actual JAMB CBT environment with timed tests and real-time navigation.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Performance Tracking</h3>
+                    <p>Monitor your progress with detailed charts and progress reports over time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile-Friendly</h3>
+                    <p>Study on any device - smartphone, tablet, or desktop with responsive design.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3>Detailed Explanations</h3>
+                    <p>Every question comes with step-by-step solutions and expert explanations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Leaderboard & Streaks</h3>
+                    <p>Compete with peers and maintain daily study streaks for motivation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Ace Your Exams?</h2>
+                <p>Join thousands of successful students who have improved their scores with ExamMaster Pro</p>
+                <button class="btn btn-primary btn-large" id="ctaSignup">
+                    <i class="fas fa-user-plus"></i> Create Free Account
+                </button>
+                <p class="cta-note">No credit card required • Start with 50 free questions daily</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <h2><span class="logo-primary">Scholar's</span><span class="logo-secondary">Camp</span></h2>
+                    </div>
+                    <p class="footer-description">The ultimate CBT practice platform for Nigerian students preparing for WAEC, JAMB, NECO and school examinations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Examinations</h3>
+                    <ul>
+                        <li><a href="library.html?exam=waec">WAEC Past Questions</a></li>
+                        <li><a href="cbt.html?exam=jamb">JAMB CBT Simulator</a></li>
+                        <li><a href="library.html?exam=neco">NECO Past Questions</a></li>
+                        <li><a href="library.html?level=secondary">Secondary School Exams</a></li>
+                        <li><a href="#">Post-UTME Practice</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="blog.html">Study Tips & Blog</a></li>
+                        <li><a href="#">Syllabus & Scheme</a></li>
+                        <li><a href="#">Video Lessons</a></li>
+                        <li><a href="#">Downloadable PDFs</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="support.html">Help & Support</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="admin.html">Admin Panel</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i>awopejumichaelo@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +2349036631218</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ogun, Nigeria</li>
+                    </ul>
+                    <div class="newsletter">
+                        <h4>Stay Updated</h4>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email">
+                            <button><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Scholar's Camp. All rights reserved. Designed for Nigerian students.</p>
+                <div class="footer-bottom-links">
+                    <span><i class="fas fa-users"></i> 100,000+ Students</span>
+                    <span><i class="fas fa-check-circle"></i> 95% Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome Back</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email or Username</label>
+                        <input type="text" id="loginEmail" placeholder="student@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login to Account</button>
+                </form>
+                <div class="modal-divider">
+                    <span>Or continue with</span>
+                </div>
+                <div class="social-login">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button class="social-btn facebook">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </button>
+                </div>
+                <p class="modal-footer-text">
+                    Don't have an account? <a href="#" id="switchToSignup">Sign up here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Free Account</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="signupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="signupFirstName">First Name</label>
+                            <input type="text" id="signupFirstName" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupLastName">Last Name</label>
+                            <input type="text" id="signupLastName" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <input type="email" id="signupEmail" placeholder="student@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Create a strong password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupClass">Class Level</label>
+                        <select id="signupClass" required>
+                            <option value="">Select your class</option>
+                            <option value="jss1">JSS 1 (Year 7)</option>
+                            <option value="jss2">JSS 2 (Year 8)</option>
+                            <option value="jss3">JSS 3 (Year 9)</option>
+                            <option value="ss1">SS 1 (Year 10)</option>
+                            <option value="ss2">SS 2 (Year 11)</option>
+                            <option value="ss3">SS 3 (Year 12)</option>
+                            <option value="graduate">Graduate/Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupExam">Main Exam Target</label>
+                        <select id="signupExam" required>
+                            <option value="">Select target exam</option>
+                            <option value="waec">WAEC</option>
+                            <option value="jamb">JAMB</option>
+                            <option value="neco">NECO</option>
+                            <option value="all">All Exams</option>
+                        </select>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Free Account</button>
+                </form>
+                <p class="modal-footer-text">
+                    Already have an account? <a href="#" id="switchToLogin">Login here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

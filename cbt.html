@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT Simulator | Scholar's Camp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                        <h1><span class="logo-primary">Scholar's</span><span class="logo-secondary">Camp</span></h1>
+                    </a>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="cbt.html" class="active"><i class="fas fa-laptop-code"></i> CBT Simulator</a>
+                    <a href="library.html"><i class="fas fa-book-open"></i> Past Questions</a>
+                    <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                </div>
+                
+                <div class="auth-buttons" id="authButtons">
+                    <!-- Populated by JavaScript -->
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CBT Simulator Main Content -->
+    <main class="cbt-container">
+        <div class="container">
+            <div class="cbt-header">
+                <h1>JAMB CBT Simulator</h1>
+                <p>Experience the real Computer-Based Test environment with timed practice</p>
+            </div>
+            
+            <!-- Exam Setup Panel -->
+            <div class="exam-setup" id="examSetup">
+                <h2><i class="fas fa-cog"></i> Configure Your Practice Test</h2>
+                
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div class="setup-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Select Exam Type</h3>
+                        <div class="exam-options">
+                            <label class="exam-option active">
+                                <input type="radio" name="examType" value="jamb" checked>
+                                <div class="option-content">
+                                    <i class="fas fa-laptop"></i>
+                                    <span>JAMB CBT</span>
+                                </div>
+                            </label>
+                            <label class="exam-option">
+                                <input type="radio" name="examType" value="waec">
+                                <div class="option-content">
+                                    <i class="fas fa-university"></i>
+                                    <span>WAEC Objective</span>
+                                </div>
+                            </label>
+                            <label class="exam-option">
+                                <input type="radio" name="examType" value="neco">
+                                <div class="option-content">
+                                    <i class="fas fa-school"></i>
+                                    <span>NECO Objective</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="setup-card">
+                        <div class="setup-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Select Subject</h3>
+                        <select id="subjectSelect" class="setup-select">
+                            <option value="mathematics">Mathematics</option>
+                            <option value="english">English Language</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="government">Government</option>
+                            <option value="economics">Economics</option>
+                            <option value="ict">ICT</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setup-card">
+                        <div class="setup-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3>Test Settings</h3>
+                        <div class="settings-grid">
+                            <div class="setting">
+                                <label for="questionCount">Number of Questions</label>
+                                <select id="questionCount" class="setup-select">
+                                    <option value="10">10 Questions (Quick Practice)</option>
+                                    <option value="20">20 Questions</option>
+                                    <option value="40" selected>40 Questions (Standard)</option>
+                                    <option value="60">60 Questions (Full Test)</option>
+                                </select>
+                            </div>
+                            <div class="setting">
+                                <label for="timeLimit">Time Limit</label>
+                                <select id="timeLimit" class="setup-select">
+                                    <option value="10">10 Minutes</option>
+                                    <option value="20">20 Minutes</option>
+                                    <option value="40">40 Minutes</option>
+                                    <option value="60" selected>60 Minutes (Standard)</option>
+                                    <option value="120">120 Minutes (Full Exam)</option>
+                                </select>
+                            </div>
+                            <div class="setting">
+                                <label for="difficulty">Difficulty Level</label>
+                                <select id="difficulty" class="setup-select">
+                                    <option value="mixed">Mixed (Recommended)</option>
+                                    <option value="easy">Easy</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="hard">Hard</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setup-card">
+                        <div class="setup-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3>Start Practice</h3>
+                        <div class="mode-options">
+                            <label class="mode-option active">
+                                <input type="radio" name="mode" value="timed" checked>
+                                <div class="mode-content">
+                                    <i class="fas fa-stopwatch"></i>
+                                    <span>Timed Exam Mode</span>
+                                    <small>Real exam simulation with timer</small>
+                                </div>
+                            </label>
+                            <label class="mode-option">
+                                <input type="radio" name="mode" value="practice">
+                                <div class="mode-content">
+                                    <i class="fas fa-book-open"></i>
+                                    <span>Practice Mode</span>
+                                    <small>No timer, with explanations</small>
+                                </div>
+                            </label>
+                        </div>
+                        <button class="btn btn-primary btn-large btn-block" id="startExamBtn">
+                            <i class="fas fa-play"></i> Start Exam Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Active Exam Interface (Hidden by default) -->
+            <div class="exam-interface" id="examInterface" style="display: none;">
+                <div class="exam-header">
+                    <div class="exam-info">
+                        <h2 id="currentExamTitle">JAMB Mathematics Practice</h2>
+                        <div class="exam-meta">
+                            <span><i class="fas fa-book"></i> <span id="currentSubject">Mathematics</span></span>
+                            <span><i class="fas fa-question-circle"></i> <span id="currentQuestionCount">40</span> Questions</span>
+                            <span><i class="fas fa-user"></i> <span id="currentStudent">Student</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="exam-timer">
+                        <div class="timer-display" id="timerDisplay">
+                            <i class="fas fa-clock"></i>
+                            <span>60:00</span>
+                        </div>
+                        <div class="timer-label">Time Remaining</div>
+                    </div>
+                </div>
+                
+                <div class="exam-body">
+                    <div class="question-panel">
+                        <div class="question-header">
+                            <h3>Question <span id="questionNumber">1</span> of <span id="totalQuestions">40</span></h3>
+                            <div class="question-actions">
+                                <button class="btn btn-outline btn-small" id="flagQuestion">
+                                    <i class="far fa-flag"></i> Flag for Review
+                                </button>
+                                <button class="btn btn-outline btn-small" id="calculatorBtn">
+                                    <i class="fas fa-calculator"></i> Calculator
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="question-content" id="questionContent">
+                            <p>If the sum of the first n terms of an arithmetic progression is given by Sₙ = 3n² + 5n, what is the common difference?</p>
+                            
+                            <div class="question-options" id="questionOptions">
+                                <label class="option">
+                                    <input type="radio" name="answer" value="A">
+                                    <span class="option-letter">A</span>
+                                    <span class="option-text">3</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="answer" value="B">
+                                    <span class="option-letter">B</span>
+                                    <span class="option-text">5</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="answer" value="C">
+                                    <span class="option-letter">C</span>
+                                    <span class="option-text">6</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="answer" value="D">
+                                    <span class="option-letter">D</span>
+                                    <span class="option-text">8</span>
+                                </label>
+                            </div>
+                            
+                            <div class="question-navigation">
+                                <button class="btn btn-outline" id="prevQuestion">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <button class="btn btn-primary" id="nextQuestion">
+                                    Next <i class="fas fa-arrow-right"></i>
+                                </button>
+                                <button class="btn btn-secondary" id="submitExamBtn" style="margin-left: auto;">
+                                    <i class="fas fa-paper-plane"></i> Submit Exam
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-panel">
+                        <div class="nav-header">
+                            <h4>Question Navigator</h4>
+                            <div class="nav-stats">
+                                <span class="answered">Answered: <span id="answeredCount">0</span></span>
+                                <span class="unanswered">Unanswered: <span id="unansweredCount">40</span></span>
+                                <span class="flagged">Flagged: <span id="flaggedCount">0</span></span>
+                            </div>
+                        </div>
+                        
+                        <div class="question-grid" id="questionGrid">
+                            <!-- Question numbers will be populated by JavaScript -->
+                        </div>
+                        
+                        <div class="nav-legend">
+                            <div class="legend-item">
+                                <span class="legend-color answered"></span>
+                                <span>Answered</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color current"></span>
+                                <span>Current</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color flagged"></span>
+                                <span>Flagged</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color"></span>
+                                <span>Unanswered</span>
+                            </div>
+                        </div>
+                        
+                        <div class="exam-tools">
+                            <button class="tool-btn" id="notepadBtn">
+                                <i class="fas fa-sticky-note"></i> Notepad
+                            </button>
+                            <button class="tool-btn" id="formulaBtn">
+                                <i class="fas fa-square-root-alt"></i> Formulas
+                            </button>
+                            <button class="tool-btn" id="instructionsBtn">
+                                <i class="fas fa-info-circle"></i> Instructions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results Panel (Hidden by default) -->
+            <div class="results-panel" id="resultsPanel" style="display: none;">
+                <div class="results-header">
+                    <h2><i class="fas fa-trophy"></i> Exam Results</h2>
+                    <p>Your performance analysis and detailed breakdown</p>
+                </div>
+                
+                <div class="results-summary">
+                    <div class="score-card">
+                        <div class="score-circle">
+                            <svg width="120" height="120">
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="#e9ecef" stroke-width="8"></circle>
+                                <circle id="scoreCircle" cx="60" cy="60" r="54" fill="none" stroke="#4361ee" stroke-width="8" stroke-dasharray="339.292" stroke-dashoffset="339.292" transform="rotate(-90 60 60)"></circle>
+                            </svg>
+                            <div class="score-text">
+                                <h2 id="finalScore">0%</h2>
+                                <p>Your Score</p>
+                            </div>
+                        </div>
+                        <div class="score-details">
+                            <div class="detail">
+                                <h4 id="correctAnswers">0</h4>
+                                <p>Correct</p>
+                            </div>
+                            <div class="detail">
+                                <h4 id="wrongAnswers">0</h4>
+                                <p>Wrong</p>
+                            </div>
+                            <div class="detail">
+                                <h4 id="skippedAnswers">0</h4>
+                                <p>Skipped</p>
+                            </div>
+                            <div class="detail">
+                                <h4 id="timeSpent">0:00</h4>
+                                <p>Time Spent</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-metrics">
+                        <h3>Performance Metrics</h3>
+                        <div class="metrics-grid">
+                            <div class="metric">
+                                <div class="metric-icon accuracy">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <h4>Accuracy</h4>
+                                <p id="accuracyMetric">0%</p>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-icon speed">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <h4>Speed</h4>
+                                <p id="speedMetric">0 Q/Hour</p>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-icon percentile">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>Percentile</h4>
+                                <p id="percentileMetric">0%</p>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-icon improvement">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                                <h4>Improvement</h4>
+                                <p id="improvementMetric">+0%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-actions">
+                    <button class="btn btn-outline" id="reviewAnswersBtn">
+                        <i class="fas fa-search"></i> Review Answers
+                    </button>
+                    <button class="btn btn-primary" id="newPracticeBtn">
+                        <i class="fas fa-redo"></i> New Practice Test
+                    </button>
+                    <button class="btn btn-secondary" id="saveResultsBtn">
+                        <i class="fas fa-save"></i> Save to Dashboard
+                    </button>
+                </div>
+                
+                <div class="topic-breakdown">
+                    <h3>Topic Breakdown</h3>
+                    <div class="topics-list" id="topicsList">
+                        <!-- Topics will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Same footer as index.html -->
+                <div class="footer-col">
+                    <div class="logo">
+                        <h2><span class="logo-primary">Scholar's</span><span class="logo-secondary">Camp</span></h2>
+                    </div>
+                    <p class="footer-description">The ultimate CBT practice platform for Nigerian students.</p>
+                </div>
+                <!-- Add other footer columns as needed -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Calculator Modal -->
+    <div class="modal" id="calculatorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Scientific Calculator</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="calculator">
+                    <div class="calculator-display">
+                        <input type="text" id="calcDisplay" readonly>
+                    </div>
+                    <div class="calculator-buttons">
+                        <!-- Calculator buttons will be added by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notepad Modal -->
+    <div class="modal" id="notepadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Exam Notepad</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <textarea id="notepadText" placeholder="Type your notes here... They will be saved automatically." rows="10"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="cbt-simulator.js"></script>
+</body>
+</html>

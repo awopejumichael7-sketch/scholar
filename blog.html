@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Blog | Scholar's Camp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                        <h1><span class="logo-primary">Scholar's</span><span class="logo-secondary">Camp</span></h1>
+                    </a>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="cbt.html"><i class="fas fa-laptop-code"></i> CBT Simulator</a>
+                    <a href="library.html"><i class="fas fa-book-open"></i> Past Questions</a>
+                    <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a href="blog.html" class="active"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                </div>
+                
+                <div class="auth-buttons" id="authButtons">
+                    <!-- Populated by JavaScript -->
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blog Main Content -->
+    <main class="blog-container">
+        <div class="container">
+            <div class="blog-header">
+                <h1><i class="fas fa-blog"></i> Study Blog & Tips</h1>
+                <p>Get expert advice, study strategies, and exam success tips from experienced educators</p>
+                <div class="blog-stats">
+                    <span><i class="fas fa-newspaper"></i> 42 Articles</span>
+                    <span><i class="fas fa-eye"></i> 12,450 Views</span>
+                    <span><i class="fas fa-user-graduate"></i> 5 Expert Writers</span>
+                </div>
+            </div>
+            
+            <!-- Featured Article -->
+            <div class="featured-article">
+                <div class="featured-image">
+                    <div class="featured-badge">
+                        <i class="fas fa-star"></i> Featured
+                    </div>
+                </div>
+                <div class="featured-content">
+                    <span class="article-category exam-tips">Exam Tips</span>
+                    <h2>10 Proven Strategies to Ace Your WAEC Exams</h2>
+                    <p class="article-excerpt">Discover the most effective study techniques used by top-performing students to excel in WAEC examinations. Learn how to manage time, reduce stress, and maximize your scores.</p>
+                    <div class="article-meta">
+                        <div class="author">
+                            <img src="https://ui-avatars.com/api/?name=Mr+Johnson&background=4361ee&color=fff" alt="Author">
+                            <div>
+                                <span class="author-name">Mr. Johnson</span>
+                                <span class="article-date">March 15, 2024 • 8 min read</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="window.location.href='#article-1'">
+                            Read Article <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Blog Categories -->
+            <div class="blog-categories">
+                <h2>Browse by Category</h2>
+                <div class="categories-grid">
+                    <button class="category-card active" data-category="all">
+                        <i class="fas fa-layer-group"></i>
+                        <span>All Articles</span>
+                    </button>
+                    <button class="category-card" data-category="exam-tips">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Exam Tips</span>
+                    </button>
+                    <button class="category-card" data-category="study-techniques">
+                        <i class="fas fa-brain"></i>
+                        <span>Study Techniques</span>
+                    </button>
+                    <button class="category-card" data-category="subject-guides">
+                        <i class="fas fa-book"></i>
+                        <span>Subject Guides</span>
+                    </button>
+                    <button class="category-card" data-category="career-advice">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Career Advice</span>
+                    </button>
+                    <button class="category-card" data-category="motivation">
+                        <i class="fas fa-fire"></i>
+                        <span>Motivation</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Search and Filter -->
+            <div class="blog-search">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="blogSearch" placeholder="Search articles...">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+                <div class="sort-options">
+                    <label for="sortArticles">Sort by:</label>
+                    <select id="sortArticles">
+                        <option value="newest">Newest First</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="reading-time">Reading Time</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Articles Grid -->
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Articles will be populated by JavaScript -->
+            </div>
+            
+            <!-- Newsletter Subscription -->
+            <div class="newsletter-section">
+                <div class="newsletter-content">
+                    <h2><i class="fas fa-envelope"></i> Get Study Tips Delivered</h2>
+                    <p>Subscribe to our newsletter and receive weekly study tips, exam updates, and educational resources directly in your inbox.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                    <p class="privacy-note">We respect your privacy. Unsubscribe at any time.</p>
+                </div>
+            </div>
+            
+            <!-- Popular Tags -->
+            <div class="popular-tags">
+                <h2>Popular Topics</h2>
+                <div class="tags-container">
+                    <span class="tag">#WAEC2024</span>
+                    <span class="tag">#JAMBCBT</span>
+                    <span class="tag">#Mathematics</span>
+                    <span class="tag">#StudySchedule</span>
+                    <span class="tag">#TimeManagement</span>
+                    <span class="tag">#ExamAnxiety</span>
+                    <span class="tag">#MemoryTechniques</span>
+                    <span class="tag">#PastQuestions</span>
+                    <span class="tag">#SmartStudy</span>
+                    <span class="tag">#SuccessTips</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <h2><span class="logo-primary">Exam</span><span class="logo-secondary">Master</span></h2>
+                    </div>
+                    <p class="footer-description">Your source for educational insights and exam success strategies.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Article Modal -->
+    <div class="modal" id="articleModal">
+        <div class="modal-content wide-modal">
+            <div class="modal-header">
+                <h2 id="modalArticleTitle">Article Title</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="article-header">
+                    <div class="article-category" id="modalArticleCategory">Category</div>
+                    <div class="article-meta">
+                        <div class="author">
+                            <img id="modalAuthorImage" src="https://ui-avatars.com/api/?name=Author&background=4361ee&color=fff" alt="Author">
+                            <div>
+                                <span class="author-name" id="modalAuthorName">Author Name</span>
+                                <span class="article-date" id="modalArticleDate">Date</span>
+                            </div>
+                        </div>
+                        <div class="article-stats">
+                            <span><i class="fas fa-eye"></i> <span id="modalArticleViews">0</span> views</span>
+                            <span><i class="fas fa-clock"></i> <span id="modalArticleTime">0</span> min read</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="article-content" id="modalArticleContent">
+                    <!-- Article content will be populated by JavaScript -->
+                </div>
+                
+                <div class="article-footer">
+                    <div class="article-tags" id="modalArticleTags">
+                        <!-- Tags will be populated by JavaScript -->
+                    </div>
+                    <div class="article-actions">
+                        <button class="btn-icon" title="Share">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        <button class="btn-icon" title="Save">
+                            <i class="far fa-bookmark"></i>
+                        </button>
+                        <button class="btn-icon" title="Print">
+                            <i class="fas fa-print"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="related-articles">
+                    <h3>Related Articles</h3>
+                    <div class="related-grid" id="relatedArticles">
+                        <!-- Related articles will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="blog.js"></script>
+</body>
+</html>

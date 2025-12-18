@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Scholar's Camp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                        <h1><span class="logo-primary">Scholar's</span><span class="logo-secondary">Camp</span></h1>
+                    </a>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="cbt.html"><i class="fas fa-laptop-code"></i> CBT Simulator</a>
+                    <a href="library.html"><i class="fas fa-book-open"></i> Past Questions</a>
+                    <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                    <a href="admin.html" class="active"><i class="fas fa-cog"></i> Admin</a>
+                </div>
+                
+                <div class="auth-buttons" id="authButtons">
+                    <!-- Populated by JavaScript -->
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Admin Main Content -->
+    <main class="admin-container">
+        <div class="container">
+            <div class="admin-header">
+                <h1><i class="fas fa-cog"></i> Admin Panel</h1>
+                <p>Manage questions, users, content, and platform settings</p>
+                <div class="admin-access">
+                    <span class="access-badge"><i class="fas fa-shield-alt"></i> Administrator Access</span>
+                    <span class="last-login">Last login: Today, 10:30 AM</span>
+                </div>
+            </div>
+            
+            <!-- Admin Dashboard -->
+            <div class="admin-stats">
+                <div class="admin-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalUsers">15,240</h3>
+                        <p>Total Users</p>
+                        <span class="stat-change positive"><i class="fas fa-arrow-up"></i> 12% this month</span>
+                    </div>
+                </div>
+                
+                <div class="admin-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalQuestions">52,189</h3>
+                        <p>Total Questions</p>
+                        <span class="stat-change positive"><i class="fas fa-arrow-up"></i> 8% this month</span>
+                    </div>
+                </div>
+                
+                <div class="admin-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalTests">124,567</h3>
+                        <p>Tests Taken</p>
+                        <span class="stat-change positive"><i class="fas fa-arrow-up"></i> 15% this month</span>
+                    </div>
+                </div>
+                
+                <div class="admin-stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="revenue">₦2.4M</h3>
+                        <p>Monthly Revenue</p>
+                        <span class="stat-change positive"><i class="fas fa-arrow-up"></i> 22% this month</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Tabs -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="questions">
+                    <i class="fas fa-question-circle"></i> Manage Questions
+                </button>
+                <button class="tab-btn" data-tab="users">
+                    <i class="fas fa-users-cog"></i> Manage Users
+                </button>
+                <button class="tab-btn" data-tab="content">
+                    <i class="fas fa-newspaper"></i> Content Management
+                </button>
+                <button class="tab-btn" data-tab="settings">
+                    <i class="fas fa-sliders-h"></i> Platform Settings
+                </button>
+                <button class="tab-btn" data-tab="analytics">
+                    <i class="fas fa-chart-pie"></i> Analytics
+                </button>
+            </div>
+            
+            <!-- Questions Management Tab -->
+            <div class="admin-tab-content active" id="questions-tab">
+                <div class="tab-header">
+                    <h2><i class="fas fa-question-circle"></i> Question Bank Management</h2>
+                    <div class="tab-actions">
+                        <button class="btn btn-primary" id="addQuestionBtn">
+                            <i class="fas fa-plus"></i> Add New Question
+                        </button>
+                        <button class="btn btn-outline" id="importQuestionsBtn">
+                            <i class="fas fa-file-import"></i> Import CSV/Excel
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="question-filters">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="questionExamFilter">Exam Type</label>
+                            <select id="questionExamFilter">
+                                <option value="all">All Exams</option>
+                                <option value="waec">WAEC</option>
+                                <option value="jamb">JAMB</option>
+                                <option value="neco">NECO</option>
+                                <option value="term">Term Exams</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="questionSubjectFilter">Subject</label>
+                            <select id="questionSubjectFilter">
+                                <option value="all">All Subjects</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="english">English</option>
+                                <option value="physics">Physics</option>
+                                <option value="chemistry">Chemistry</option>
+                                <option value="biology">Biology</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="questionYearFilter">Year</label>
+                            <select id="questionYearFilter">
+                                <option value="all">All Years</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="questionStatusFilter">Status</label>
+                            <select id="questionStatusFilter">
+                                <option value="all">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="pending">Pending Review</option>
+                                <option value="archived">Archived</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="questionSearch" placeholder="Search questions by text or ID...">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+                
+                <div class="questions-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAllQuestions"></th>
+                                <th>ID</th>
+                                <th>Question Preview</th>
+                                <th>Exam</th>
+                                <th>Subject</th>
+                                <th>Year</th>
+                                <th>Difficulty</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="questionsTableBody">
+                            <!-- Questions will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="table-actions">
+                        <div class="bulk-actions">
+                            <select id="bulkAction">
+                                <option value="">Bulk Actions</option>
+                                <option value="activate">Activate</option>
+                                <option value="archive">Archive</option>
+                                <option value="delete">Delete</option>
+                            </select>
+                            <button class="btn btn-outline" id="applyBulkAction">Apply</button>
+                        </div>
+                        
+                        <div class="pagination">
+                            <span>Showing 1-20 of 52,189 questions</span>
+                            <div class="pagination-controls">
+                                <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                                <span class="current-page">1</span>
+                                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Users Management Tab -->
+            <div class="admin-tab-content" id="users-tab">
+                <div class="tab-header">
+                    <h2><i class="fas fa-users-cog"></i> User Management</h2>
+                    <div class="tab-actions">
+                        <button class="btn btn-primary" id="addUserBtn">
+                            <i class="fas fa-user-plus"></i> Add User
+                        </button>
+                        <button class="btn btn-outline" id="exportUsersBtn">
+                            <i class="fas fa-file-export"></i> Export Users
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="users-filters">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="userTypeFilter">User Type</label>
+                            <select id="userTypeFilter">
+                                <option value="all">All Users</option>
+                                <option value="student">Students</option>
+                                <option value="teacher">Teachers</option>
+                                <option value="admin">Administrators</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="userStatusFilter">Account Status</label>
+                            <select id="userStatusFilter">
+                                <option value="all">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="suspended">Suspended</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="userPlanFilter">Subscription Plan</label>
+                            <select id="userPlanFilter">
+                                <option value="all">All Plans</option>
+                                <option value="free">Free</option>
+                                <option value="premium">Premium</option>
+                                <option value="school">School Plan</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="userDateFilter">Join Date</label>
+                            <select id="userDateFilter">
+                                <option value="all">All Time</option>
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="userSearch" placeholder="Search users by name or email...">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+                
+                <div class="users-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAllUsers"></th>
+                                <th>User ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Class</th>
+                                <th>Plan</th>
+                                <th>Tests Taken</th>
+                                <th>Status</th>
+                                <th>Join Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Users will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="table-actions">
+                        <div class="bulk-actions">
+                            <select id="userBulkAction">
+                                <option value="">Bulk Actions</option>
+                                <option value="activate">Activate Accounts</option>
+                                <option value="suspend">Suspend Accounts</option>
+                                <option value="delete">Delete Accounts</option>
+                            </select>
+                            <button class="btn btn-outline" id="applyUserBulkAction">Apply</button>
+                        </div>
+                        
+                        <div class="pagination">
+                            <span>Showing 1-20 of 15,240 users</span>
+                            <div class="pagination-controls">
+                                <button class="pagination-btn"><i class="fas fa-chevron-left"></i></button>
+                                <span class="current-page">1</span>
+                                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Management Tab -->
+            <div class="admin-tab-content" id="content-tab">
+                <div class="tab-header">
+                    <h2><i class="fas fa-newspaper"></i> Content Management</h2>
+                    <div class="tab-actions">
+                        <button class="btn btn-primary" id="addContentBtn">
+                            <i class="fas fa-plus"></i> Add New Content
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="content-management-grid">
+                    <div class="content-card">
+                        <div class="content-icon">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <h3>Blog Posts</h3>
+                        <p>Manage educational articles and study tips</p>
+                        <div class="content-stats">
+                            <span><i class="fas fa-file-alt"></i> 42 Posts</span>
+                            <span><i class="fas fa-eye"></i> 12.4K Views</span>
+                        </div>
+                        <button class="btn btn-outline btn-block" onclick="window.location.href='#blog-management'">
+                            Manage Blog
+                        </button>
+                    </div>
+                    
+                    <div class="content-card">
+                        <div class="content-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Video Lessons</h3>
+                        <p>Upload and manage educational videos</p>
+                        <div class="content-stats">
+                            <span><i class="fas fa-play-circle"></i> 156 Videos</span>
+                            <span><i class="fas fa-eye"></i> 45.2K Views</span>
+                        </div>
+                        <button class="btn btn-outline btn-block" onclick="window.location.href='#video-management'">
+                            Manage Videos
+                        </button>
+                    </div>
+                    
+                    <div class="content-card">
+                        <div class="content-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h3>PDF Resources</h3>
+                        <p>Manage downloadable study materials</p>
+                        <div class="content-stats">
+                            <span><i class="fas fa-file-pdf"></i> 89 PDFs</span>
+                            <span><i class="fas fa-download"></i> 8.7K Downloads</span>
+                        </div>
+                        <button class="btn btn-outline btn-block" onclick="window.location.href='#pdf-management'">
+                            Manage PDFs
+                        </button>
+                    </div>
+                    
+                    <div class="content-card">
+                        <div class="content-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Announcements</h3>
+                        <p>Create platform announcements and notifications</p>
+                        <div class="content-stats">
+                            <span><i class="fas fa-bullhorn"></i> 15 Active</span>
+                            <span><i class="fas fa-users"></i> All Users</span>
+                        </div>
+                        <button class="btn btn-outline btn-block" onclick="window.location.href='#announcements'">
+                            Manage Announcements
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="recent-content">
+                    <h3><i class="fas fa-history"></i> Recently Added Content</h3>
+                    <div class="content-list" id="recentContentList">
+                        <!-- Recent content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Platform Settings Tab -->
+            <div class="admin-tab-content" id="settings-tab">
+                <div class="tab-header">
+                    <h2><i class="fas fa-sliders-h"></i> Platform Settings</h2>
+                    <button class="btn btn-primary" id="saveSettingsBtn">
+                        <i class="fas fa-save"></i> Save All Changes
+                    </button>
+                </div>
+                
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3><i class="fas fa-user-shield"></i> Account Settings</h3>
+                        <div class="settings-group">
+                            <label for="registrationOpen">User Registration</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="registrationOpen" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <p class="setting-description">Allow new users to register on the platform</p>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label for="emailVerification">Email Verification</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="emailVerification" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <p class="setting-description">Require email verification for new accounts</p>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label for="maxFreeQuestions">Daily Free Questions Limit</label>
+                            <input type="number" id="maxFreeQuestions" value="50" min="0" max="1000">
+                            <p class="setting-description">Number of free questions for non-premium users</p>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3><i class="fas fa-exam"></i> Exam Settings</h3>
+                        <div class="settings-group">
+                            <label for="defaultExamTime">Default Exam Time (minutes)</label>
+                            <input type="number" id="defaultExamTime" value="120" min="10" max="300">
+                            <p class="setting-description">Default time limit for timed exams</p>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label for="questionsPerPage">Questions Per Page</label>
+                            <input type="number" id="questionsPerPage" value="1" min="1" max="10">
+                            <p class="setting-description">Number of questions to show per page in CBT</p>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label for="passingScore">Default Passing Score (%)</label>
+                            <input type="number" id="passingScore" value="50" min="0" max="100">
+                            <p class="setting-description">Minimum score to pass an exam</p>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3><i class="fas fa-money-bill-wave"></i> Payment Settings</h3>
+                        <div class="settings-group">
+                            <label for="premiumPrice">Premium Monthly Price (₦)</label>
+                            <input type="number" id="premiumPrice" value="1500" min="0">
+                            <p class="setting-description">Monthly subscription price for premium plan</p>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label for="schoolDiscount">School Plan Discount (%)</label>
+                            <input type="number" id="schoolDiscount" value="30" min="0" max="100">
+                            <p class="setting-description">Discount percentage for school plans</p>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label for="paymentMethods">Accepted Payment Methods</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox">
+                                    <input type="checkbox" name="paymentMethods" value="card" checked> Card Payments
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="paymentMethods" value="transfer" checked> Bank Transfer
+                                </label>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="paymentMethods" value="ussd" checked> USSD
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h3><i class="fas fa-bell"></i> Notification Settings</h3>
+                        <div class="settings-group">
+                            <label for="emailNotifications">Email Notifications</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <p class="setting-description">Send email notifications to users</p>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label for="pushNotifications">Push Notifications</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="pushNotifications" checked>
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <p class="setting-description">Enable browser push notifications</p>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label for="maintenanceMode">Maintenance Mode</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="maintenanceMode">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <p class="setting-description">Put platform in maintenance mode</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analytics Tab -->
+            <div class="admin-tab-content" id="analytics-tab">
+                <div class="tab-header">
+                    <h2><i class="fas fa-chart-pie"></i> Platform Analytics</h2>
+                    <div class="tab-actions">
+                        <select id="analyticsPeriod">
+                            <option value="7days">Last 7 Days</option>
+                            <option value="30days" selected>Last 30 Days</option>
+                            <option value="90days">Last 90 Days</option>
+                            <option value="year">This Year</option>
+                        </select>
+                        <button class="btn btn-outline" id="exportAnalyticsBtn">
+                            <i class="fas fa-file-export"></i> Export Data
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="analytics-charts">
+                    <div class="chart-card">
+                        <h3><i class="fas fa-user-chart"></i> User Growth</h3>
+                        <div class="chart-container">
+                            <canvas id="userGrowthChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3><i class="fas fa-chart-bar"></i> Exam Usage</h3>
+                        <div class="chart-container">
+                            <canvas id="examUsageChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3><i class="fas fa-money-bill-wave"></i> Revenue Trends</h3>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3><i class="fas fa-book"></i> Subject Popularity</h3>
+                        <div class="chart-container">
+                            <canvas id="subjectChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-stats">
+                    <div class="stats-card">
+                        <h3><i class="fas fa-mobile-alt"></i> Platform Usage</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <h4>65%</h4>
+                                <p>Mobile Users</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>30%</h4>
+                                <p>Desktop Users</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>5%</h4>
+                                <p>Tablet Users</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <h3><i class="fas fa-clock"></i> Engagement</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <h4>24m</h4>
+                                <p>Avg. Session Time</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>3.2</h4>
+                                <p>Avg. Tests/Day</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>78%</h4>
+                                <p>Return Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <h3><i class="fas fa-globe-africa"></i> Geographic Distribution</h3>
+                        <div class="stats-list">
+                            <div class="geo-item">
+                                <span>Lagos</span>
+                                <span class="geo-percent">42%</span>
+                            </div>
+                            <div class="geo-item">
+                                <span>Abuja</span>
+                                <span class="geo-percent">18%</span>
+                            </div>
+                            <div class="geo-item">
+                                <span>Port Harcourt</span>
+                                <span class="geo-percent">12%</span>
+                            </div>
+                            <div class="geo-item">
+                                <span>Ibadan</span>
+                                <span class="geo-percent">8%</span>
+                            </div>
+                            <div class="geo-item">
+                                <span>Others</span>
+                                <span class="geo-percent">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <h2><span class="logo-primary">Scholar's</span><span class="logo-secondary">Camp</span></h2>
+                    </div>
+                    <p class="footer-description">Administrative dashboard for managing the Scholar's Camp platform.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add Question Modal -->
+    <div class="modal" id="addQuestionModal">
+        <div class="modal-content wide-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-plus"></i> Add New Question</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addQuestionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newQuestionExam">Exam Type *</label>
+                            <select id="newQuestionExam" required>
+                                <option value="">Select Exam</option>
+                                <option value="waec">WAEC</option>
+                                <option value="jamb">JAMB</option>
+                                <option value="neco">NECO</option>
+                                <option value="term">Term Exam</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="newQuestionSubject">Subject *</label>
+                            <select id="newQuestionSubject" required>
+                                <option value="">Select Subject</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="english">English</option>
+                                <option value="physics">Physics</option>
+                                <option value="chemistry">Chemistry</option>
+                                <option value="biology">Biology</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="newQuestionYear">Year *</label>
+                            <input type="number" id="newQuestionYear" min="2000" max="2024" value="2024" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newQuestionText">Question Text *</label>
+                        <textarea id="newQuestionText" rows="3" placeholder="Enter the question..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newQuestionImage">Question Image (Optional)</label>
+                        <input type="file" id="newQuestionImage" accept="image/*">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newOptionA">Option A *</label>
+                            <input type="text" id="newOptionA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newOptionB">Option B *</label>
+                            <input type="text" id="newOptionB" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newOptionC">Option C *</label>
+                            <input type="text" id="newOptionC" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newOptionD">Option D *</label>
+                            <input type="text" id="newOptionD" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="newCorrectAnswer">Correct Answer *</label>
+                            <select id="newCorrectAnswer" required>
+                                <option value="">Select Answer</option>
+                                <option value="A">Option A</option>
+                                <option value="B">Option B</option>
+                                <option value="C">Option C</option>
+                                <option value="D">Option D</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="newQuestionDifficulty">Difficulty *</label>
+                            <select id="newQuestionDifficulty" required>
+                                <option value="easy">Easy</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newQuestionExplanation">Explanation (Optional)</label>
+                        <textarea id="newQuestionExplanation" rows="3" placeholder="Add explanation for the answer..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newQuestionTopics">Topics (Comma separated)</label>
+                        <input type="text" id="newQuestionTopics" placeholder="e.g., Algebra, Geometry, Calculus">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeModal('addQuestionModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Question</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Questions Modal -->
+    <div class="modal" id="importQuestionsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-file-import"></i> Import Questions</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="import-instructions">
+                    <h3>Import Instructions</h3>
+                    <p>Upload a CSV or Excel file with the following columns:</p>
+                    <ul>
+                        <li><strong>question_text</strong>: The question text</li>
+                        <li><strong>option_a, option_b, option_c, option_d</strong>: The four options</li>
+                        <li><strong>correct_answer</strong>: A, B, C, or D</li>
+                        <li><strong>exam_type</strong>: WAEC, JAMB, NECO, or TERM</li>
+                        <li><strong>subject</strong>: Subject name</li>
+                        <li><strong>year</strong>: Year of exam</li>
+                        <li><strong>difficulty</strong>: easy, medium, or hard</li>
+                    </ul>
+                </div>
+                
+                <div class="import-upload">
+                    <label for="importFile">Select File</label>
+                    <input type="file" id="importFile" accept=".csv,.xlsx,.xls">
+                    <p class="file-help">Supported formats: CSV, Excel (.xlsx, .xls)</p>
+                </div>
+                
+                <div class="import-options">
+                    <label class="checkbox">
+                        <input type="checkbox" id="importOverwrite"> Overwrite existing questions
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" id="importValidate" checked> Validate data before import
+                    </label>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('importQuestionsModal')">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="startImportBtn">Start Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div class="modal" id="editUserModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-edit"></i> Edit User</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editUserForm">
+                    <div class="form-group">
+                        <label for="editUserName">Full Name</label>
+                        <input type="text" id="editUserName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editUserEmail">Email Address</label>
+                        <input type="email" id="editUserEmail" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editUserClass">Class Level</label>
+                            <select id="editUserClass">
+                                <option value="">Select Class</option>
+                                <option value="jss1">JSS 1</option>
+                                <option value="jss2">JSS 2</option>
+                                <option value="jss3">JSS 3</option>
+                                <option value="ss1">SS 1</option>
+                                <option value="ss2">SS 2</option>
+                                <option value="ss3">SS 3</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editUserRole">User Role</label>
+                            <select id="editUserRole">
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="admin">Administrator</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editUserStatus">Account Status</label>
+                            <select id="editUserStatus">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="suspended">Suspended</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editUserPlan">Subscription Plan</label>
+                            <select id="editUserPlan">
+                                <option value="free">Free</option>
+                                <option value="premium">Premium</option>
+                                <option value="school">School Plan</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editUserNotes">Admin Notes</label>
+                        <textarea id="editUserNotes" rows="3" placeholder="Add any notes about this user..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" onclick="closeModal('editUserModal')">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

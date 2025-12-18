@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support | ExamMaster Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                        <h1><span class="logo-primary">Exam</span><span class="logo-secondary">Master</span></h1>
+                    </a>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="cbt.html"><i class="fas fa-laptop-code"></i> CBT Simulator</a>
+                    <a href="library.html"><i class="fas fa-book-open"></i> Past Questions</a>
+                    <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="support.html" class="active"><i class="fas fa-headset"></i> Support</a>
+                </div>
+                
+                <div class="auth-buttons" id="authButtons">
+                    <!-- Populated by JavaScript -->
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Support Main Content -->
+    <main class="support-container">
+        <div class="container">
+            <div class="support-header">
+                <h1><i class="fas fa-headset"></i> Help & Support Center</h1>
+                <p>Get help with your account, technical issues, or any questions about ExamMaster Pro</p>
+                <div class="support-stats">
+                    <span><i class="fas fa-check-circle"></i> 98% Satisfaction Rate</span>
+                    <span><i class="fas fa-clock"></i> Avg. Response: 2 Hours</span>
+                    <span><i class="fas fa-comments"></i> 24/7 Support Available</span>
+                </div>
+            </div>
+            
+            <!-- Quick Help Options -->
+            <div class="quick-help">
+                <h2>How can we help you today?</h2>
+                <div class="help-options-grid">
+                    <div class="help-option" onclick="window.location.href='#faq'">
+                        <div class="help-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3>FAQs</h3>
+                        <p>Find answers to frequently asked questions</p>
+                    </div>
+                    
+                    <div class="help-option" onclick="window.location.href='#contact'">
+                        <div class="help-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Contact Us</h3>
+                        <p>Send us a message directly</p>
+                    </div>
+                    
+                    <div class="help-option" onclick="window.location.href='#tutorials'">
+                        <div class="help-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3>Video Tutorials</h3>
+                        <p>Watch step-by-step guides</p>
+                    </div>
+                    
+                    <div class="help-option" onclick="window.location.href='#community'">
+                        <div class="help-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community Forum</h3>
+                        <p>Get help from other students</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="faq-section" id="faq">
+                <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                <p>Quick answers to common questions about ExamMaster Pro</p>
+                
+                <div class="faq-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="faqSearch" placeholder="Search for answers...">
+                </div>
+                
+                <div class="faq-categories">
+                    <button class="faq-category-btn active" data-category="all">All Questions</button>
+                    <button class="faq-category-btn" data-category="account">Account & Billing</button>
+                    <button class="faq-category-btn" data-category="technical">Technical Issues</button>
+                    <button class="faq-category-btn" data-category="exams">Exams & Questions</button>
+                    <button class="faq-category-btn" data-category="subscription">Subscription</button>
+                </div>
+                
+                <div class="faq-list" id="faqList">
+                    <!-- FAQs will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-section" id="contact">
+                <div class="contact-header">
+                    <h2><i class="fas fa-envelope"></i> Contact Our Support Team</h2>
+                    <p>Can't find what you're looking for? Send us a message and we'll get back to you within 2 hours.</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="contactName">Full Name *</label>
+                                <input type="text" id="contactName" placeholder="Your full name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactEmail">Email Address *</label>
+                                <input type="email" id="contactEmail" placeholder="Your email address" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactSubject">Subject *</label>
+                                <select id="contactSubject" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="account">Account Issues</option>
+                                    <option value="technical">Technical Problems</option>
+                                    <option value="billing">Billing & Payment</option>
+                                    <option value="feedback">Feedback & Suggestions</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactMessage">Message *</label>
+                                <textarea id="contactMessage" rows="6" placeholder="Describe your issue or question in detail..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactAttachment">Attachment (Optional)</label>
+                                <input type="file" id="contactAttachment">
+                                <p class="file-help">Upload screenshots or documents that might help us understand your issue (Max: 5MB)</p>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <h3><i class="fas fa-clock"></i> Support Hours</h3>
+                            <ul>
+                                <li><strong>Monday - Friday:</strong> 8:00 AM - 10:00 PM</li>
+                                <li><strong>Saturday:</strong> 9:00 AM - 8:00 PM</li>
+                                <li><strong>Sunday:</strong> 10:00 AM - 6:00 PM</li>
+                                <li><strong>Emergency:</strong> 24/7 via email</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3><i class="fas fa-phone-alt"></i> Contact Information</h3>
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <strong>Email</strong>
+                                        <p>support@exammaster.pro</p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <strong>Phone</strong>
+                                        <p>+234 800 123 4567</p>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <strong>Address</strong>
+                                        <p>Lagos, Nigeria</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h3><i class="fas fa-lightbulb"></i> Before You Contact</h3>
+                            <ul>
+                                <li>Check our FAQs above</li>
+                                <li>Clear your browser cache</li>
+                                <li>Try using a different browser</li>
+                                <li>Include error messages in your report</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Tutorials -->
+            <div class="tutorials-section" id="tutorials">
+                <h2><i class="fas fa-play-circle"></i> Video Tutorials</h2>
+                <p>Watch our video guides to learn how to use ExamMaster Pro effectively</p>
+                
+                <div class="tutorials-grid">
+                    <div class="tutorial-card">
+                        <div class="tutorial-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3>Getting Started Guide</h3>
+                        <p>Learn how to create an account and navigate the platform</p>
+                        <span class="tutorial-duration"><i class="far fa-clock"></i> 5:30</span>
+                    </div>
+                    
+                    <div class="tutorial-card">
+                        <div class="tutorial-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3>CBT Simulator Tutorial</h3>
+                        <p>Master the computer-based test interface and features</p>
+                        <span class="tutorial-duration"><i class="far fa-clock"></i> 8:15</span>
+                    </div>
+                    
+                    <div class="tutorial-card">
+                        <div class="tutorial-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3>Using Past Questions</h3>
+                        <p>How to search and practice with our question library</p>
+                        <span class="tutorial-duration"><i class="far fa-clock"></i> 6:45</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Community Forum -->
+            <div class="community-section" id="community">
+                <div class="community-header">
+                    <h2><i class="fas fa-users"></i> Community Forum</h2>
+                    <p>Join discussions with other students and share knowledge</p>
+                </div>
+                
+                <div class="community-stats">
+                    <div class="community-stat">
+                        <i class="fas fa-comments"></i>
+                        <div>
+                            <h3>2,458</h3>
+                            <p>Active Discussions</p>
+                        </div>
+                    </div>
+                    
+                    <div class="community-stat">
+                        <i class="fas fa-user-friends"></i>
+                        <div>
+                            <h3>15,240</h3>
+                            <p>Community Members</p>
+                        </div>
+                    </div>
+                    
+                    <div class="community-stat">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h3>8,956</h3>
+                            <p>Questions Answered</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="forum-preview">
+                    <h3>Recent Discussions</h3>
+                    <div class="discussions-list" id="discussionsList">
+                        <!-- Discussions will be populated by JavaScript -->
+                    </div>
+                    <button class="btn btn-outline" onclick="window.location.href='#forum'">
+                        <i class="fas fa-external-link-alt"></i> Visit Full Forum
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <h2><span class="logo-primary">Exam</span><span class="logo-secondary">Master</span></h2>
+                    </div>
+                    <p class="footer-description">We're here to help you succeed. Contact us anytime for assistance.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Ticket Status Modal -->
+    <div class="modal" id="ticketStatusModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-ticket-alt"></i> Check Ticket Status</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="ticket-search">
+                    <p>Enter your ticket reference number to check the status of your support request.</p>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="ticketNumber" placeholder="Enter ticket number (e.g., TKT-2024-001)">
+                        <button class="btn btn-primary" id="checkTicketBtn">Check Status</button>
+                    </div>
+                </div>
+                
+                <div class="ticket-status" id="ticketStatus" style="display: none;">
+                    <div class="status-header">
+                        <h3>Ticket #<span id="ticketId">TKT-2024-001</span></h3>
+                        <span class="status-badge open">Open</span>
+                    </div>
+                    
+                    <div class="status-timeline">
+                        <div class="timeline-item active">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Ticket Created</h4>
+                                <p>Your support request has been received</p>
+                                <span class="timeline-time">Today, 10:30 AM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Under Review</h4>
+                                <p>Our team is reviewing your issue</p>
+                                <span class="timeline-time">--</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>In Progress</h4>
+                                <p>We're working on a solution</p>
+                                <span class="timeline-time">--</span>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Resolved</h4>
+                                <p>Your issue has been resolved</p>
+                                <span class="timeline-time">--</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="status-actions">
+                        <button class="btn btn-outline" onclick="closeModal('ticketStatusModal')">
+                            Close
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-comment"></i> Add Comment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="support.js"></script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Scholar's Camp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                        <h1><span class="logo-primary">Scholar's</span><span class="logo-secondary">Camp</span></h1>
+                    </a>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="cbt.html"><i class="fas fa-laptop-code"></i> CBT Simulator</a>
+                    <a href="library.html"><i class="fas fa-book-open"></i> Past Questions</a>
+                    <a href="dashboard.html" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                </div>
+                
+                <div class="auth-buttons" id="authButtons">
+                    <!-- Populated by JavaScript -->
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Main Content -->
+    <main class="dashboard-container">
+        <div class="container">
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome back, <span id="userName">Student</span>! <span class="wave">👋</span></h1>
+                    <p>Track your progress, analyze performance, and improve your scores</p>
+                </div>
+                <div class="streak-section">
+                    <div class="streak-display">
+                        <i class="fas fa-fire"></i>
+                        <div>
+                            <h3 id="streakCount">0</h3>
+                            <p>Day Streak</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="practiceTodayBtn">
+                        <i class="fas fa-play-circle"></i> Practice Today
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon primary">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalTests">0</h3>
+                        <p>Total Tests Taken</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="averageScore">0%</h3>
+                        <p>Average Score</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon warning">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalTime">0h</h3>
+                        <p>Time Practiced</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon secondary">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="ranking">#0</h3>
+                        <p>Global Ranking</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- Left Column -->
+                <div class="dashboard-left">
+                    <!-- Performance Chart -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-bar"></i> Performance Trend</h3>
+                            <select id="chartPeriod">
+                                <option value="7days">Last 7 Days</option>
+                                <option value="30days">Last 30 Days</option>
+                                <option value="90days">Last 90 Days</option>
+                                <option value="all">All Time</option>
+                            </select>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-container">
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                            <a href="#" class="view-all">View All</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-list" id="activityList">
+                                <!-- Activities will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="dashboard-right">
+                    <!-- Weak Areas -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-exclamation-triangle"></i>Areas to Improve</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="weak-areas-list" id="weakAreasList">
+                                <!-- Weak areas will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-actions-grid">
+                                <button class="quick-action" onclick="window.location.href='cbt.html'">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Start New Test</span>
+                                </button>
+                                <button class="quick-action" onclick="window.location.href='library.html'">
+                                    <i class="fas fa-book-open"></i>
+                                    <span>Browse Questions</span>
+                                </button>
+                                <button class="quick-action" id="savedItemsBtn">
+                                    <i class="fas fa-bookmark"></i>
+                                    <span>Saved Items</span>
+                                </button>
+                                <button class="quick-action" id="leaderboardBtn">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Leaderboard</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Study Goals -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bullseye"></i> Study Goals</h3>
+                            <button class="btn btn-outline btn-small" id="setGoalsBtn">Set Goals</button>
+                        </div>
+                        <div class="card-body">
+                            <div class="goals-list" id="goalsList">
+                                <!-- Goals will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Subject Performance -->
+            <div class="dashboard-card full-width">
+                <div class="card-header">
+                    <h3><i class="fas fa-star"></i> Subject Performance</h3>
+                    <select id="subjectPerformanceFilter">
+                        <option value="all">All Subjects</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="english">English</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="biology">Biology</option>
+                    </select>
+                </div>
+                <div class="card-body">
+                    <div class="subject-performance-grid" id="subjectPerformanceGrid">
+                        <!-- Subject performance will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Same footer as index.html -->
+                <div class="footer-col">
+                    <div class="logo">
+                        <h2><span class="logo-primary">Scholar's</span><span class="logo-secondary">Camp</span></h2>
+                    </div>
+                    <p class="footer-description">Track your learning journey and maximize your exam performance.</p>
+                </div>
+                <!-- Add other footer columns as needed -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Saved Items Modal -->
+    <div class="modal" id="savedItemsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-bookmark"></i> Saved Items</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="saved-items-list" id="savedItemsList">
+                    <!-- Saved items will be populated by JavaScript -->
+                </div>
+                <div class="no-saved-items" id="noSavedItems">
+                    <i class="fas fa-bookmark"></i>
+                    <h4>No saved items yet</h4>
+                    <p>Save past question sets to access them quickly from here</p>
+                    <button class="btn btn-primary" onclick="window.location.href='library.html'">
+                        <i class="fas fa-book-open"></i> Browse Questions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div class="modal" id="leaderboardModal">
+        <div class="modal-content wide-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-trophy"></i> Global Leaderboard</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="leaderboard-tabs">
+                    <button class="tab-btn active" data-tab="weekly">Weekly</button>
+                    <button class="tab-btn" data-tab="monthly">Monthly</button>
+                    <button class="tab-btn" data-tab="alltime">All Time</button>
+                </div>
+                <div class="leaderboard-list" id="leaderboardList">
+                    <!-- Leaderboard will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Set Goals Modal -->
+    <div class="modal" id="setGoalsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-bullseye"></i> Set Study Goals</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="goalsForm">
+                    <div class="form-group">
+                        <label for="goalType">Goal Type</label>
+                        <select id="goalType" required>
+                            <option value="">Select goal type</option>
+                            <option value="daily">Daily Practice</option>
+                            <option value="weekly">Weekly Target</option>
+                            <option value="subject">Subject Mastery</option>
+                            <option value="score">Score Improvement</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalDescription">Goal Description</label>
+                        <input type="text" id="goalDescription" placeholder="e.g., Complete 20 mathematics questions daily" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalTarget">Target</label>
+                        <input type="number" id="goalTarget" placeholder="e.g., 20" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalDeadline">Deadline</label>
+                        <input type="date" id="goalDeadline" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Save Goal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

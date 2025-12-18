@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Questions Library | ExamMaster Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeBtn"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                        <h1><span class="logo-primary">Exam</span><span class="logo-secondary">Master</span></h1>
+                    </a>
+                </div>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    <a href="cbt.html"><i class="fas fa-laptop-code"></i> CBT Simulator</a>
+                    <a href="library.html" class="active"><i class="fas fa-book-open"></i> Past Questions</a>
+                    <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                    <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+                    <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                </div>
+                
+                <div class="auth-buttons" id="authButtons">
+                    <!-- Populated by JavaScript -->
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Library Main Content -->
+    <main class="library-container">
+        <div class="container">
+            <div class="library-header">
+                <h1>Past Questions Library</h1>
+                <p>Browse thousands of past questions from WAEC, JAMB, NECO and school examinations</p>
+            </div>
+            
+            <!-- Search and Filters -->
+            <div class="library-filters">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search past questions by subject, topic, or year...">
+                    <button class="btn btn-primary" id="searchBtn">Search</button>
+                </div>
+                
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label for="examFilter"><i class="fas fa-graduation-cap"></i> Exam Type</label>
+                        <select id="examFilter">
+                            <option value="all">All Exams</option>
+                            <option value="waec">WAEC</option>
+                            <option value="jamb">JAMB</option>
+                            <option value="neco">NECO</option>
+                            <option value="term">Term Exams</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="subjectFilter"><i class="fas fa-book"></i> Subject</label>
+                        <select id="subjectFilter">
+                            <option value="all">All Subjects</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="english">English</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="ict">ICT</option>
+                            <option value="economics">Economics</option>
+                            <option value="government">Government</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="yearFilter"><i class="fas fa-calendar"></i> Year</label>
+                        <select id="yearFilter">
+                            <option value="all">All Years</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="classFilter"><i class="fas fa-user-graduate"></i> Class</label>
+                        <select id="classFilter">
+                            <option value="all">All Classes</option>
+                            <option value="jss1">JSS 1 (Year 7)</option>
+                            <option value="jss2">JSS 2 (Year 8)</option>
+                            <option value="jss3">JSS 3 (Year 9)</option>
+                            <option value="ss1">SS 1 (Year 10)</option>
+                            <option value="ss2">SS 2 (Year 11)</option>
+                            <option value="ss3">SS 3 (Year 12)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="termFilter"><i class="fas fa-layer-group"></i> Term</label>
+                        <select id="termFilter">
+                            <option value="all">All Terms</option>
+                            <option value="1st">1st Term</option>
+                            <option value="2nd">2nd Term</option>
+                            <option value="3rd">3rd Term</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="difficultyFilter"><i class="fas fa-chart-line"></i> Difficulty</label>
+                        <select id="difficultyFilter">
+                            <option value="all">All Levels</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="filter-actions">
+                    <button class="btn btn-outline" id="resetFilters">
+                        <i class="fas fa-redo"></i> Reset Filters
+                    </button>
+                    <button class="btn btn-primary" id="applyFilters">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Results Stats -->
+            <div class="results-stats">
+                <h3>Showing <span id="resultsCount">0</span> past question sets</h3>
+                <div class="view-options">
+                    <button class="view-option active" data-view="grid">
+                        <i class="fas fa-th"></i> Grid
+                    </button>
+                    <button class="view-option" data-view="list">
+                        <i class="fas fa-list"></i> List
+                    </button>
+                    <div class="sort-options">
+                        <label for="sortBy">Sort by:</label>
+                        <select id="sortBy">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="difficulty">Difficulty</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Questions Grid -->
+            <div class="questions-grid" id="questionsGrid">
+                <!-- Past question sets will be populated by JavaScript -->
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn" id="prevPage" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="page-numbers" id="pageNumbers">
+                    <span class="page-number active">1</span>
+                    <span class="page-number">2</span>
+                    <span class="page-number">3</span>
+                    <span class="page-number">4</span>
+                    <span class="page-number">5</span>
+                </div>
+                <button class="pagination-btn" id="nextPage">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No past questions found</h3>
+                <p>Try adjusting your filters or search terms</p>
+                <button class="btn btn-primary" id="clearSearch">Clear Search</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Same footer as index.html -->
+                <div class="footer-col">
+                    <div class="logo">
+                        <h2><span class="logo-primary">Exam</span><span class="logo-secondary">Master</span></h2>
+                    </div>
+                    <p class="footer-description">Access the largest database of past questions for Nigerian exams.</p>
+                </div>
+                <!-- Add other footer columns as needed -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Question Set Modal -->
+    <div class="modal" id="questionSetModal">
+        <div class="modal-content wide-modal">
+            <div class="modal-header">
+                <h2 id="modalSetTitle">WAEC Mathematics 2023</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="set-details">
+                    <div class="detail-row">
+                        <div class="detail-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <span class="detail-label">Exam Type</span>
+                                <span class="detail-value" id="modalExamType">WAEC</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-book"></i>
+                            <div>
+                                <span class="detail-label">Subject</span>
+                                <span class="detail-value" id="modalSubject">Mathematics</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <div>
+                                <span class="detail-label">Year</span>
+                                <span class="detail-value" id="modalYear">2023</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <span class="detail-label">Questions</span>
+                                <span class="detail-value" id="modalQuestionCount">60</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="set-description">
+                        <h4>Description</h4>
+                        <p id="modalDescription">Complete WAEC Mathematics objective questions from 2023 examination. Includes all topics: Algebra, Geometry, Trigonometry, Calculus, and Statistics.</p>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="practiceOnlineBtn">
+                            <i class="fas fa-laptop"></i> Practice Online
+                        </button>
+                        <button class="btn btn-secondary" id="downloadPdfBtn">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <button class="btn btn-outline" id="saveSetBtn">
+                            <i class="fas fa-bookmark"></i> Save to Library
+                        </button>
+                    </div>
+                    
+                    <div class="topic-breakdown">
+                        <h4>Topics Covered</h4>
+                        <div class="topics-tags" id="modalTopics">
+                            <!-- Topics will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="library.js"></script>
+</body>
+</html>
